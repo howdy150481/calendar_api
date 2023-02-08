@@ -1,12 +1,12 @@
 export type Event = {
-    id: number,
+    id: string,
     title: string,
     details: string,
     dateStart: string,
     timeStart: string,
     dateEnd: string,
     timeEnd: string,
-    color?: string,
-  allDay?: boolean;
-    editable?: boolean
-}
+    color: string,
+    allDay: boolean;
+    editable: boolean
+} 
