@@ -19,4 +19,9 @@ export class AppController {
   delete(@Param('id') id: string): void {
     this.appService.deleteEvent(id);
   }
+
+  @Post('move')
+  moveEvent(@Body() body: any) {
+    this.appService.moveEvent(body);
+  }
 }

@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Event } from './lib/Event';
+import { v4 as uuid } from 'uuid'
 
 @Injectable()
 export class AppService {
@@ -7,7 +8,7 @@ export class AppService {
 
   constructor() {
     this.events.push({
-      id: 'asdf',
+      id: uuid(),
       title: 'Event 1',
       details: 'Mooooh',
       dateStart: '2023-02-09',
@@ -19,7 +20,7 @@ export class AppService {
       color: 'yellow'
     });
     this.events.push({
-      id: 'asfwefwe',
+      id: uuid(),
       title: 'Event 2',
       details: 'Wuff',
       dateStart: '2023-02-06',
@@ -57,5 +58,17 @@ export class AppService {
         this.events.splice(Number(key), 1);
       }
     }    
-  }
+  }  
+
+  moveEvent(body: any): void {
+    for (let key in this.events) {
+      if (this.events[key].id === body.id) {      
+        this.events[key].dateStart = body.dateStart;
+        this.events[key].timeStart = body.timeStart;
+        this.events[key].dateEnd = body.dateEnd;
+        this.events[key].timeEnd = body.timeEnd;
+      }
+    }
+  }  
 }
+ 
